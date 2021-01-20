@@ -133,7 +133,7 @@
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits"/>
                             </textField>
-                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="top" borderStyle="roundedRect" placeholder="SUbtitle" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="X2l-Yz-wgA">
+                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="SUbtitle" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="X2l-Yz-wgA">
                                 <rect key="frame" x="20" y="126" width="374" height="52"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="52" id="49V-bW-aem"/>
@@ -144,6 +144,18 @@
                             <datePicker contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" datePickerMode="date" style="wheels" translatesAutoresizingMaskIntoConstraints="NO" id="za6-5l-yDQ">
                                 <rect key="frame" x="20" y="198" width="374" height="216"/>
                             </datePicker>
+                            <switch opaque="NO" contentMode="scaleToFill" verticalHuggingPriority="750" ambiguous="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" on="YES" translatesAutoresizingMaskIntoConstraints="NO" id="73S-gl-Ahi">
+                                <rect key="frame" x="345" y="454" width="51" height="31"/>
+                            </switch>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" verticalHuggingPriority="251" ambiguous="YES" text="Switch ToDo status  InProgress/Done" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="7x3-fa-Fo9">
+                                <rect key="frame" x="20" y="454" width="317" height="31"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="31" id="c2d-H6-SBe"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="Y8w-vB-dDo"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
@@ -153,14 +165,20 @@
                             <constraint firstItem="za6-5l-yDQ" firstAttribute="leading" secondItem="Y8w-vB-dDo" secondAttribute="leading" constant="20" id="CqP-lj-8h1"/>
                             <constraint firstAttribute="trailing" secondItem="za6-5l-yDQ" secondAttribute="trailing" constant="20" id="E9n-VX-nx5"/>
                             <constraint firstItem="za6-5l-yDQ" firstAttribute="top" secondItem="X2l-Yz-wgA" secondAttribute="bottom" constant="20" id="ETO-n4-XnQ"/>
+                            <constraint firstItem="73S-gl-Ahi" firstAttribute="leading" secondItem="7x3-fa-Fo9" secondAttribute="trailing" constant="8" id="M5c-ka-1m5"/>
                             <constraint firstItem="qCM-ba-YLr" firstAttribute="top" secondItem="Y8w-vB-dDo" secondAttribute="top" constant="20" id="aoT-9V-wHL"/>
                             <constraint firstItem="Y8w-vB-dDo" firstAttribute="trailing" secondItem="X2l-Yz-wgA" secondAttribute="trailing" constant="20" id="b95-ag-11k"/>
+                            <constraint firstItem="7x3-fa-Fo9" firstAttribute="top" secondItem="za6-5l-yDQ" secondAttribute="bottom" constant="40" id="g6U-tq-BzO"/>
+                            <constraint firstItem="7x3-fa-Fo9" firstAttribute="leading" secondItem="Y8w-vB-dDo" secondAttribute="leading" constant="20" id="jl1-PQ-Y1Q"/>
+                            <constraint firstItem="73S-gl-Ahi" firstAttribute="top" secondItem="za6-5l-yDQ" secondAttribute="bottom" constant="40" id="kb6-Yv-IUf"/>
                             <constraint firstItem="qCM-ba-YLr" firstAttribute="leading" secondItem="Y8w-vB-dDo" secondAttribute="leading" constant="20" id="mY6-nV-MBr"/>
                             <constraint firstItem="Y8w-vB-dDo" firstAttribute="trailing" secondItem="qCM-ba-YLr" secondAttribute="trailing" constant="20" id="qCD-5G-ZHo"/>
+                            <constraint firstItem="Y8w-vB-dDo" firstAttribute="trailing" secondItem="73S-gl-Ahi" secondAttribute="trailing" constant="20" id="tiG-ws-KOf"/>
                         </constraints>
                     </view>
                     <connections>
                         <outlet property="deadLineDatePicker" destination="za6-5l-yDQ" id="f23-5R-FPw"/>
+                        <outlet property="statusSwitcher" destination="73S-gl-Ahi" id="s4Q-ka-vOd"/>
                         <outlet property="subtitleTextField" destination="X2l-Yz-wgA" id="oBB-FE-SIL"/>
                         <outlet property="titleTextField" destination="qCM-ba-YLr" id="lY3-VH-yz1"/>
                     </connections>

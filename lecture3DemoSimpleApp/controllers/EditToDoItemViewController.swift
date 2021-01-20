@@ -11,6 +11,7 @@ class EditToDoItemViewController: UIViewController, UITextFieldDelegate {
     @IBOutlet weak var titleTextField: UITextField!
     @IBOutlet weak var subtitleTextField: UITextField!
     @IBOutlet weak var deadLineDatePicker: UIDatePicker!
+    @IBOutlet weak var statusSwitcher: UISwitch!
     var index: Int?
     var editingItem: ToDoItem?
     
@@ -18,6 +19,7 @@ class EditToDoItemViewController: UIViewController, UITextFieldDelegate {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        statusSwitcher.setOn(editingItem?.status ?? false, animated: true)
         titleTextField.text = editingItem?.title
         titleTextField.delegate = self
         subtitleTextField.text = editingItem?.subTitle
@@ -30,7 +32,8 @@ class EditToDoItemViewController: UIViewController, UITextFieldDelegate {
     @IBAction func saveToDoItem(_ sender: Any){
         if let title = titleTextField.text, !title.isEmpty,let subtitle = subtitleTextField.text, !subtitle.isEmpty{
             let date = deadLineDatePicker.date
-            let item = ToDoItem(title: title, subTitle: subtitle, deadLine: date, status: statusState(date))
+            let status = statusSwitcher.isOn
+            let item = ToDoItem(title: title, subTitle: subtitle, deadLine: date, status: statusState(date, status))
             delegate?.editItem(self.index!, item)
             navigationController?.popViewController(animated: true)
         }
@@ -39,11 +42,17 @@ class EditToDoItemViewController: UIViewController, UITextFieldDelegate {
         }
     }
     
-    func statusState(_ date:Date) -> Bool {
-        if date > Date() {
-            return true
+    func statusState(_ date:Date,_ status: Bool) -> Bool {
+        if !status {
+            if date < Date()  {
+                //if user switch and take past date it gives Done for status
+                print("It is time!!!")
+                return true
+            }else{
+                return false
+            }
         }else{
-            return false
+            return true
         }
     }
 

@@ -34,12 +34,20 @@ class NewToDoViewController: UIViewController, UITextFieldDelegate {
     @IBAction func saveNewToDoItem(_ sender: Any) {
         if let title = titleTextField.text, !title.isEmpty,let subtitle = subtitleTextField.text, !subtitle.isEmpty{
             let date = deadLineDatePicker.date
-            let item = ToDoItem(title: title, subTitle: subtitle, deadLine: date, status: false)
+            let item = ToDoItem(title: title, subTitle: subtitle, deadLine: date, status: statusState(date))
             delegate?.addItem(item)
             navigationController?.popViewController(animated: true)
         }
         else {
             print("Add Somthing")
+        }
+    }
+    
+    func statusState(_ date:Date) -> Bool {
+        if date < Date() {
+            return true
+        }else{
+            return false
         }
     }
 }

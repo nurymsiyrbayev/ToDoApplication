@@ -20,10 +20,10 @@ class TableViewCell: UITableViewCell {
         titleLabel.text = item.title
         deadLineLabel.text =  convertDateToString(item.deadLine)
         subTitleLabel.text = item.subTitle
-        if item.status{
-            contentView.backgroundColor = .green
+        if item.status == true{
+            contentView.backgroundColor = .systemGreen
         }else{
-            contentView.backgroundColor = .gray
+            contentView.backgroundColor = .none
         }
     }
     

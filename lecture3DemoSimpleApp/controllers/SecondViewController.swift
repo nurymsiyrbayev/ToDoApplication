@@ -37,7 +37,7 @@ class SecondViewController: UIViewController {
         super.viewDidLoad()
         self.title = "Main page"
         self.configureTableView()
-        arr.append(ToDoItem( title: "LOl", subTitle: "lol", deadLine: Date(), status: true))
+        arr.append(ToDoItem( title: "LOl", subTitle: "lol", deadLine: Date(), status: false))
     }
     
     func configureTableView(){
@@ -106,6 +106,13 @@ extension SecondViewController: UITableViewDelegate, UITableViewDataSource{
         let status = UIContextualAction(style: .normal, title: "Done/InProgress") { (contextualAction, view, actionPerformed: (Bool) -> ()) in actionPerformed(true)
             self.arr[indexPath.row].status.toggle()
             tableView.reloadData()
+        }
+        if self.arr[indexPath.row].status{
+            status.backgroundColor = .lightGray
+            status.title = "InProgress"
+        } else{
+            status.backgroundColor = .systemGreen
+            status.title = "Done"
         }
         return UISwipeActionsConfiguration(actions: [status])
     }
